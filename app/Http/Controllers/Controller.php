@@ -11,4 +11,6 @@ class Controller extends BaseController
     use AuthorizesRequests, ValidatesRequests;
 
     //1st commit
+
+    //2nd commit
 }
