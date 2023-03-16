@@ -9,9 +9,5 @@ class Employee extends Model
 {
     use HasFactory;
 
-    //new branch
-    //ok
-    //new
-
-    //other in new
+//fresh
 }
