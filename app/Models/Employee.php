@@ -10,4 +10,5 @@ class Employee extends Model
     use HasFactory;
 
 //first commit for merge
+//second commit for merge
 }
