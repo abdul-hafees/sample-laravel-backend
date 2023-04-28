@@ -16,7 +16,7 @@ class AuthController extends Controller
 
         if (! $user || ! Hash::check($request->password, $user->password))
         {
-            return \response()->json("These credentials don not match our records", 403);
+            return \response()->json(['data' => null, 'message' => "These credentials do not match our records"], 403);
         }
 
         $data = [
