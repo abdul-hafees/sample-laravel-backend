@@ -17,7 +17,13 @@ class EmployeeController extends Controller
 
     public function show(Employee $employee): JsonResponse
     {
-        return response()->json($employee);
+
+        $data = [
+            'data' => $employee,
+            'message' => "Employee retrieved"
+        ];
+
+        return response()->json($data);
     }
 
     public function store(Request $request): JsonResponse
@@ -28,7 +34,11 @@ class EmployeeController extends Controller
         $employee->phone = $request->phone;
         $employee->save();
 
-        return response()->json();
+        $data = [
+            'data' => $employee,
+            'message' => "Employee added"
+        ];
+        return response()->json($data);
     }
 
     public function update(Request $request, Employee $employee): JsonResponse
@@ -38,7 +48,12 @@ class EmployeeController extends Controller
         $employee->phone = $request->phone;
         $employee->save();
 
-        return response()->json();
+        $data = [
+            'data' => $employee,
+            'message' => "Employee updated"
+        ];
+
+        return response()->json($data);
     }
 
     public function destroy(Employee $employee): JsonResponse
