@@ -11,7 +11,7 @@ class EmployeeController extends Controller
 {
     public function index(): JsonResponse
     {
-        $employees = Employee::query()->latest()->get();
+        $employees = Employee::query()->latest()->paginate(5);
         return response()->json($employees);
     }
 

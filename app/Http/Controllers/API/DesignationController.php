@@ -11,7 +11,8 @@ class DesignationController extends Controller
 {
     public function index(): JsonResponse
     {
-        $designations = Designation::query()->latest()->get();
+        $designations = Designation::query()->latest()->paginate(5);
+//        $designations = Designation::query()->latest()->get();
         return response()->json($designations);
     }
 
