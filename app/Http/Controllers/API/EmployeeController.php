@@ -32,6 +32,12 @@ class EmployeeController extends Controller
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
+        if ($request->image) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(storage_path('app/images'), $imageName);
+            $employee->image = $imageName;
+        }
+
         $employee->save();
 
         $data = [
@@ -46,6 +52,11 @@ class EmployeeController extends Controller
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
+        if ($request->image) {
+            $imageName = time().'.'.$request->image->extension();
+            $request->image->move(storage_path('app/images'), $imageName);
+            $employee->image = $imageName;
+        }
         $employee->save();
 
         $data = [
