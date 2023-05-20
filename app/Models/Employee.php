@@ -8,18 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     use HasFactory;
+    protected $appends = ['image_url'];
 
-//fresh
-//first commit for merge
-//second commit for merge
+    public function getImageUrlAttribute()
+    {
+        $imageUrl = $this->image ? url('storage/images/' . $this->image) : url('user/user.jpg');
 
-//fresh2
-//first commit for rebase
-//second commit for rebase
-
-//fresh3.1
-//fresh3
-//first commit for rebase 2
-//second commit for rebase 2
-//fresh3.1
+        return $imageUrl;
+    }
 }
