@@ -32,7 +32,8 @@ class EmployeeController extends Controller
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
-        if ($request->image) {
+        $employee->designation_id = $request->designation_id;
+        if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
             $request->image->move(storage_path('app/public/images'), $imageName);
             $employee->image = $imageName;
@@ -49,12 +50,14 @@ class EmployeeController extends Controller
 
     public function update(Request $request, Employee $employee): JsonResponse
     {
+        info($request);
         $employee->name = $request->name;
         $employee->email = $request->email;
         $employee->phone = $request->phone;
-        if ($request->image) {
+        $employee->designation_id = $request->designation_id;
+        if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();
-            $request->image->move(storage_path('app/images'), $imageName);
+            $request->image->move(storage_path('app/public/images'), $imageName);
             $employee->image = $imageName;
         }
         $employee->save();
